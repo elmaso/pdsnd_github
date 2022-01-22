@@ -1,20 +1,19 @@
->**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
+# Bike share analyzer
 
-### Date created
-Include the date you created this project and README file.
-
-### Project Title
-Replace the Project Title
+## 21-Jan-2022
 
 ### Description
-Describe what your project is about and what it does
+
+When running this program you can select from 3 different mayor cities
+you can filter or not some of the date to analyzes getting some interesting
+facts about the use of rent bikes stations at that city
 
 ### Files used
-Include the files used
+
+bikeshare_2.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
 
-## Made a simple changes for the project
-
-# Added new information second edition
+The project is part of Udacity
+Programing for Data Sciences Nano Degree
+You can get more info [here](https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104)
