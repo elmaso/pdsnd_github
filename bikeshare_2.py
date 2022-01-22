@@ -67,7 +67,6 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     print('*'*40)
     print('*'*40)
-    # DONE: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     cities = {'c':'Chicago', 'n':'New York City', 'w':'Washington'}
     c = None
     options = ['c', 'n', 'w', 'q']
@@ -96,7 +95,6 @@ def get_filters():
         print('<','-'*38,'> \n')
         return city, 'all', 'all'
     else:
-    # DONE: get user input for month (all,)
         months = ['all','January', 'February', 'March', 'April', 'May', 'June']
         m = input(
             '\n Select the month number (1-6) to analiza or just hit enter to analizas all\n')
@@ -106,7 +104,6 @@ def get_filters():
             month = 'all'
         print(f'\nYou selected {city.title()} and {month.title()}')
 
-        # DONE: get user input for day of week (all, monday, ... sunday)
         day_or_week = {'a':'all', 'm':'Monday', 't':'Tuesday', 'w':'Wednesday', 'r':'Thursday', 'f':'Friday', 's':'Saturday', 'u':'Sunday'}
         
         d = input(
@@ -145,15 +142,12 @@ def load_data(city, month, day):
     if month != 'all':
         df = df[df['Start month'] == month]
 
-    # # filter by day of week if applicable
+    # filter by day of week if applicable
     if day != 'all':
         df = df[df['day_of_week'] == day]
     
     # join Start Stop Station to df
     df['Start Stop Station'] = df['Start Station'].str.cat(df['End Station'], sep=' - ')
-
-    # print('we are returning the dataframe\n')
-    # print(df[['city','Start Time','Start month','Start hour', 'day_of_week', 'Start Stop Station']])
     return df
 
 
@@ -163,14 +157,11 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # DONE: display the most common month
     common_month = df['Start month'].mode()[0]
     print(f'The most common month is {common_month}')
-    # DONE: display the most common day of week
     common_day = df['day_of_week'].mode()[0]
     print(f"\nThe most common day of the week is {common_day}")
 
-    # DONE: display the most common start hour
     common_start_hour = df['Start hour'].mode()[0]
     print(f"\nThe most common start hour is : {common_start_hour}")
 
@@ -185,15 +176,12 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # DONE: display most commonly used start station
     common_start_station = df['Start Station'].mode()[0]
     print(f"\nThe most common start station is : {common_start_station}")
 
-    # DONE: display most commonly used end station
     common_end_station = df['End Station'].mode()[0]
     print(f"\nThe most common end station is : {common_end_station}")
 
-    # DONE: display most frequent combination of start station and end station trip
     common_start_end_station = df['Start Stop Station'].mode()[0]
     print(f"\nThe most common start and end station is : {common_start_end_station}")
 
@@ -207,10 +195,8 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # DONE: display total travel time
     print(f'\nThe total travel time is {df["Trip Duration"].sum()} seconds')
 
-    # DONE: display mean travel time
     print(f'\nThe mean travel time is {df["Trip Duration"].mean()} seconds')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -223,25 +209,14 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # DONE: Display counts of user types
     user_types = df['User Type'].value_counts()
     print(f'\nThe counts of user types are :\n{user_types}')
 
-    # DONE: Display counts of gender
     gender_types = df['Gender'].value_counts()
     print(f'\nThe counts for gender type are :\n{gender_types}')
  
 
-    # TO DO: Display earliest, most recent, and most common year of birth
     common_year = df['Birth Year'].mode()[0]
-    #group_birth = df.groupby(['city']).agg('minBD'=np.min,'maxBD'=np.max))
-    #group_birth.agg(minYear=('Birth Year', np.min), maxYear=('Birth Year', np.max))
-   # print(f'\ngroup birth: {group_birth.head()}')
-    #print(  f'The earliest year of birth is {df2.minYear.min()} \nthe most recent year of birth is {df2.maxYear.max()} \nAnd the most common year of birth is {common_year}')
-
-    #print(f'The earliest year of birth is {group_birth['amin']} \nthe most recent year of birth is {group_birth.['amax']} \nAnd the most common year of birth is {common_year}')
-
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -265,9 +240,6 @@ def view_data(df):
         view_data = input("Do you wish to continue?(y) or just hit Enter to stop   \n").lower()
     
     print('-'*40)
-    
-
-
 
 
 def main():
@@ -275,11 +247,6 @@ def main():
         city, month, day = get_filters()
         df = load_data(city, month, day)
         print( df.columns)
-        # time_stats(df)
-        # time.sleep(1)
-        # station_stats(df)
-        # time.sleep(1)
-        #trip_duration_stats(df)
         if city.lower() != 'washington':
             time.sleep(1)
             user_stats(df)
