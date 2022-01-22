@@ -6,6 +6,8 @@ from turtle import clear
 import pandas as pd
 import numpy as np
 
+# This is just a simple comment to test the git
+
 CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
